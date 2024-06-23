@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-//import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/Estacionamiento.dart';
 import 'package:hdv_ipark/model/Usuario.dart';
 import '../../main.dart';
+import 'drawer_menu.dart';
 
 import 'package:hdv_ipark/globals.dart' as globals;
 
@@ -69,8 +69,8 @@ class _pantallaHomeState extends State<Home> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           // Cuando la operación asíncrona está completa
-          /*usuario = snapshot.data as Usuario; // Obtén el valor de usuario
-          _loadPlacas(usuario).then((value) {
+          usuario = snapshot.data as Usuario; // Obtén el valor de usuario
+          /*_loadPlacas(usuario).then((value) {
               MyApp.placas.clear();
               MyApp.placas.addAll(value);
           });*/
@@ -90,10 +90,10 @@ class _pantallaHomeState extends State<Home> {
               iconTheme: const IconThemeData(
                   color: Color.fromARGB(255, 17, 70, 151), size: 50),
             ),
-            //endDrawer: const DrawerMenu(),
+            endDrawer: const DrawerMenu(),
             backgroundColor: Colors.cyan,
 
-            body: Container(
+            body: SizedBox(
               height: 800,
               child: Card(
                 color: Colors.cyan,
