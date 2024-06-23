@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/Estacionamiento.dart';
+import 'package:hdv_ipark/ui/find-parking/DescriptionParking.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -51,13 +52,11 @@ class _pantallaListParkingState extends State<ListParking> {
 
   Future<List<Estacionamiento>> _loadParkings() async {
     final hasPermission = await _checkPermissions();
-
     if (!hasPermission) {
       return [];
     }
 
     var registros = <Estacionamiento>[];
-
     try {
       final position = await _geolocatorPlatform.getCurrentPosition();
       var longitud = position.longitude;
@@ -186,7 +185,7 @@ class _pantallaListParkingState extends State<ListParking> {
   Widget _createCardParking(Estacionamiento estacionamiento) {
     return InkWell(
       onTap: () {
-        //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DescriptionParking(estacionamiento)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DescriptionParking(estacionamiento)));
         //Navigator.pushNamed(context, MyApp.description_parking);
       },
       child: Card(
